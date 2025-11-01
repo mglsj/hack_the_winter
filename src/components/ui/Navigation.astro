@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+
+import Red from "@/assets/images/red.webp";
+import Blues from "@/assets/images/blues.webp";
+import Chuck from "@/assets/images/chuck.webp";
+import Matilda from "@/assets/images/matilda.webp";
+import Hal from "@/assets/images/hal.webp";
+import Bomb from "@/assets/images/bomb.webp";
+
+const menus = [
+	{ title: "Home", src: Red, href: "/home/" },
+	{ title: "Timeline", src: Chuck, href: "/timeline/" },
+	{ title: "Rules", src: Blues, href: "/rules/" },
+	{ title: "FAQs", src: Matilda, href: "/faqs/" },
+	{ title: "Sponsor", src: Hal, href: "/sponsor/" },
+	{ title: "About", src: Bomb, href: "/about/" },
+];
+---
+
+<nav class="w-full flex flex-row flex-wrap justify-between select-none">
+	{
+		menus.map((menu) => (
+			<a
+				href={menu.href}
+				class="flex flex-col align-middle items-center mb-8"
+			>
+				<Image
+					src={menu.src}
+					alt={`${menu.title} Image`}
+					class="h-32 w-32 object-contain"
+				/>
+				<p class="text-center font-angry text-xl tracking-wider">
+					{menu.title}
+				</p>
+			</a>
+		))
+	}
+</nav>

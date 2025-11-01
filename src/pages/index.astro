@@ -1,0 +1,250 @@
+---
+import BaseLayout from "@/layout/BaseLayout.astro";
+import Image from "astro/components/Image.astro";
+
+import BigBrother from "@/assets/images/big_bro.png";
+import Flock from "@/assets/images/flock.png";
+
+import Red from "@/assets/images/red.webp";
+import Blues from "@/assets/images/blues.webp";
+import Chuck from "@/assets/images/chuck.webp";
+import Matilda from "@/assets/images/matilda.webp";
+import Hal from "@/assets/images/hal.webp";
+import Bomb from "@/assets/images/bomb.webp";
+---
+
+<BaseLayout>
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<h1
+			class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider"
+		>
+			HACK THE WINTER
+		</h1>
+		<h2
+			class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry pb-4"
+		>
+			The Second Wave
+		</h2>
+
+		<a href="/home/">
+			<Image
+				src={BigBrother}
+				alt="Big Brother is Watching You"
+				class="w-64 md:w-96 h-auto"
+			/>
+		</a>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<Image
+				src={Red}
+				alt="Red"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+			<div>
+				<h2
+					class="text-8xl md:text-9xl font-angry pb-4 text-center text-red-500"
+				>
+					48 Hours
+				</h2>
+
+				<p
+					class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry text-center"
+				>
+					National Hackathon
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<div>
+				<h2
+					class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry pb-4 text-center text-cyan-500"
+				>
+					Build The Future 2026
+				</h2>
+
+				<p
+					class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry text-center"
+				>
+					Dec '25 - Jan '26
+				</p>
+			</div>
+			<Image
+				src={Blues}
+				alt="Blues"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<Image
+				src={Chuck}
+				alt="Chuck"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+			<div>
+				<h2
+					class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-angry pb-4 text-center text-yellow-400"
+				>
+					Prizes Worth
+				</h2>
+
+				<p class="text-7xl md:text-8xl lg:text-9xl font-angry">
+					₹ 5,00,000 +
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<div class="flex flex-col align-middle justify-center">
+				<h2
+					class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-rose-300"
+				>
+					Coming Soon
+				</h2>
+
+				<div
+					class="flex flex-row text-center justify-center font-angry"
+				>
+					<div class="flex flex-col">
+						<p class="text-6xl">12</p>
+						<p class="text-3xl">Days</p>
+					</div>
+
+					<div class="mx-4">
+						<p class="text-7xl">:</p>
+					</div>
+
+					<div class="flex flex-col">
+						<p class="text-6xl">12</p>
+						<p class="text-3xl">Hours</p>
+					</div>
+
+					<div class="mx-4">
+						<p class="text-7xl">:</p>
+					</div>
+
+					<div class="flex flex-col">
+						<p class="text-6xl">12</p>
+						<p class="text-3xl">Minutes</p>
+					</div>
+
+					<div class="mx-4">
+						<p class="text-7xl">:</p>
+					</div>
+
+					<div class="flex flex-col">
+						<p class="text-6xl">12</p>
+						<p class="text-3xl">Seconds</p>
+					</div>
+				</div>
+			</div>
+			<Image
+				src={Matilda}
+				alt="Matilda"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<Image
+				src={Hal}
+				alt="Hal"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+			<div>
+				<h2
+					class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-green-500"
+				>
+					Our Sponsors
+				</h2>
+				<p>
+					Come join hands with us to make this event a grand success!
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<div
+			class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
+		>
+			<div>
+				<h2
+					class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-gray-500"
+				>
+					Organized By
+				</h2>
+				<p
+					class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-angry text-center"
+				>
+					{"<WeCode/> GEHU Bhimtal"}
+				</p>
+			</div>
+			<Image
+				src={Bomb}
+				alt="Bomb"
+				class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+			/>
+		</div>
+	</div>
+
+	<div
+		class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
+	>
+		<h2
+			class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider"
+		>
+			HACK THE WINTER
+		</h2>
+
+		<a href="/home/">
+			<Image
+				src={Flock}
+				alt="Flock"
+				class="w-64 md:w-96 lg:w-128 h-auto"
+			/>
+		</a>
+
+		<a
+			href="/home/"
+			class="mt-8 px-6 py-3 bg-blue-600 text-white text-2xl font-angry rounded-lg hover:bg-blue-700 transition-colors"
+		>
+			Learn More
+		</a>
+	</div>
+</BaseLayout>

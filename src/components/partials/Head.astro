@@ -1,0 +1,55 @@
+---
+import siteConfig from "@/site.config";
+import ClientRouter from "astro/components/ClientRouter.astro";
+import { getImage } from "astro:assets";
+
+export interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: ImageMetadata;
+}
+
+const {
+	title = siteConfig.title,
+	description = siteConfig.description,
+	ogImage,
+} = Astro.props;
+
+let ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
+
+if (ogImage) {
+	const image = await getImage({
+		src: ogImage,
+		format: "png",
+		fit: "contain",
+		width: 1000,
+		height: 1000,
+	});
+	ogImageUrl = new URL(image.src, Astro.url.origin);
+}
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="url" content={Astro.url.href} />
+<meta name="robots" content="index,follow" />
+<meta name="language" content="EN" />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph -->
+
+<meta property="og:title" content={title} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+
+<link rel="icon" href={siteConfig.favicon} />
+
+<ClientRouter />

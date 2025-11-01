@@ -1,0 +1,25 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer
+	transition:name="footer"
+	class:list={[
+		"flex flex-col items-center justify-center text-center mt-20",
+		className,
+	]}
+>
+	<p class="mt-2">
+		&copy; {new Date().getFullYear()} Hack The Winter. All rights reserved.
+	</p>
+
+	<p class="text-white/70 my-2">
+		<span class="text-nowrap">We Code Club,</span>
+		<span class="text-nowrap">Graphic Era Hill University,</span>
+		<span class="text-nowrap">Bhimtal Campus</span>
+	</p>
+</footer>
