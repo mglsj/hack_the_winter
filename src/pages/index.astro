@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layout/BaseLayout.astro";
 import Image from "astro/components/Image.astro";
+import "./animation.css";
 
 import BigBrother from "@/assets/images/big_bro.png";
 import Flock from "@/assets/images/flock.png";
@@ -15,30 +16,35 @@ import Bomb from "@/assets/images/bomb.webp";
 
 <BaseLayout>
 	<main>
+		<!-- Snow Animation -->
+		<div class="snow"></div>
+		
 		<div
 			class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
 		>
 			<h1
-				class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider"
+				class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider animate-fade-in-up"
+				style="animation-delay: 0.2s;"
 			>
 				HACK THE WINTER
 			</h1>
 			<h2
-				class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry pb-4"
+				class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry pb-4 animate-fade-in-up"
+				style="animation-delay: 0.6s; opacity: 0;"
 			>
 				The Second Wave
 			</h2>
 
-			<a href="/home/">
+			<a href="/home/" class="animate-fade-in-up hover-scale" style="animation-delay: 1s; opacity: 0;">
 				<Image
 					loading="eager"
 					src={BigBrother}
 					alt="Big Brother is Watching You"
-					class="w-64 md:w-96 h-auto"
+					class="w-64 md:w-96 h-auto animate-float"
 				/>
 			</a>
 
-			<p>(Scroll ↓)</p>
+			<p class="animate-bounce-slow animate-fade-in-up" style="animation-delay: 1.4s; opacity: 0;">(Scroll ↓)</p>
 		</div>
 
 		<div
@@ -50,9 +56,9 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Red}
 					alt="Red"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-left hover-scale animate-pulse-slow"
 				/>
-				<div>
+				<div class="scroll-animate-right">
 					<h2
 						class="text-8xl md:text-9xl font-angry pb-4 text-center text-red-500"
 					>
@@ -74,7 +80,7 @@ import Bomb from "@/assets/images/bomb.webp";
 			<div
 				class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
 			>
-				<div>
+				<div class="scroll-animate-left">
 					<h2
 						class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-angry pb-4 text-center text-cyan-500"
 					>
@@ -90,7 +96,7 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Blues}
 					alt="Blues"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-right hover-scale animate-float"
 				/>
 			</div>
 		</div>
@@ -104,9 +110,9 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Chuck}
 					alt="Chuck"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-left hover-scale animate-pulse-slow"
 				/>
-				<div>
+				<div class="scroll-animate-right">
 					<h2
 						class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-angry pb-4 text-center text-yellow-400"
 					>
@@ -126,7 +132,7 @@ import Bomb from "@/assets/images/bomb.webp";
 			<div
 				class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
 			>
-				<div class="flex flex-col align-middle justify-center">
+				<div class="flex flex-col align-middle justify-center scroll-animate-left">
 					<h2
 						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-rose-300"
 					>
@@ -135,36 +141,37 @@ import Bomb from "@/assets/images/bomb.webp";
 
 					<div
 						class="flex flex-row text-center justify-center font-angry"
+						id="countdown"
 					>
-						<div class="flex flex-col">
-							<p class="text-5xl">12</p>
+						<div class="flex flex-col hover-scale">
+							<p class="text-5xl animate-pulse-slow" id="days">12</p>
 							<p class="text-2xl">Days</p>
 						</div>
 
 						<div class="mx-4">
-							<p class="text-6xl">:</p>
+							<p class="text-6xl animate-bounce-slow">:</p>
 						</div>
 
-						<div class="flex flex-col">
-							<p class="text-5xl">12</p>
+						<div class="flex flex-col hover-scale">
+							<p class="text-5xl animate-pulse-slow" id="hours">12</p>
 							<p class="text-2xl">Hours</p>
 						</div>
 
 						<div class="mx-4">
-							<p class="text-6xl">:</p>
+							<p class="text-6xl animate-bounce-slow">:</p>
 						</div>
 
-						<div class="flex flex-col">
-							<p class="text-5xl">12</p>
+						<div class="flex flex-col hover-scale">
+							<p class="text-5xl animate-pulse-slow" id="minutes">12</p>
 							<p class="text-2xl">Minutes</p>
 						</div>
 
 						<div class="mx-4">
-							<p class="text-6xl">:</p>
+							<p class="text-6xl animate-bounce-slow">:</p>
 						</div>
 
-						<div class="flex flex-col">
-							<p class="text-5xl">12</p>
+						<div class="flex flex-col hover-scale">
+							<p class="text-5xl animate-pulse-slow" id="seconds">12</p>
 							<p class="text-2xl">Seconds</p>
 						</div>
 					</div>
@@ -172,7 +179,7 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Matilda}
 					alt="Matilda"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-right hover-scale animate-float"
 				/>
 			</div>
 		</div>
@@ -186,15 +193,15 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Hal}
 					alt="Hal"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-left hover-scale animate-float"
 				/>
-				<div>
+				<div class="scroll-animate-right">
 					<h2
 						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-green-500"
 					>
 						Our Sponsors
 					</h2>
-					<p>
+					<p class="text-lg md:text-xl text-center">
 						Come join hands with us to make this event a grand
 						success!
 					</p>
@@ -208,7 +215,7 @@ import Bomb from "@/assets/images/bomb.webp";
 			<div
 				class="w-full flex flex-row flex-wrap align-middle justify-evenly items-center"
 			>
-				<div>
+				<div class="scroll-animate-left">
 					<h2
 						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry pb-4 text-center text-gray-500"
 					>
@@ -223,7 +230,7 @@ import Bomb from "@/assets/images/bomb.webp";
 				<Image
 					src={Bomb}
 					alt="Bomb"
-					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain"
+					class="w-64 h-64 lg:w-96 lg:h-96 xl:w-128 xl:h-128 object-contain scroll-animate-right hover-scale animate-pulse-slow"
 				/>
 			</div>
 		</div>
@@ -232,25 +239,131 @@ import Bomb from "@/assets/images/bomb.webp";
 			class="w-full min-h-screen flex flex-col items-center align-middle justify-center"
 		>
 			<h2
-				class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider"
+				class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-angry italic text-center tracking-wider scroll-animate"
 			>
 				HACK THE WINTER
 			</h2>
 
-			<a href="/home/">
+			<a href="/home/" class="scroll-animate hover-scale">
 				<Image
 					src={Flock}
 					alt="Flock"
-					class="w-64 md:w-96 lg:w-128 h-auto"
+					class="w-64 md:w-96 lg:w-128 h-auto animate-float"
 				/>
 			</a>
 
 			<a
 				href="/home/"
-				class="mt-8 px-6 py-3 bg-blue-600 text-white text-2xl font-angry rounded-lg hover:bg-blue-700 transition-colors"
+				class="mt-8 px-6 py-3 bg-blue-600 text-white text-2xl font-angry rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 scroll-animate animate-pulse-slow"
 			>
 				Learn More
 			</a>
 		</div>
 	</main>
+
+	<script>
+		// Scroll animations
+		function initScrollAnimations() {
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('animate');
+					}
+				});
+			}, observerOptions);
+
+			// Observe all scroll-animate elements
+			document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+				observer.observe(el);
+			});
+		}
+
+		// Countdown timer
+		function initCountdown() {
+			// Set target date (example: December 25, 2025)
+			const targetDate = new Date('2025-12-20T00:00:00').getTime();
+
+			function updateCountdown() {
+				const now = new Date().getTime();
+				const distance = targetDate - now;
+
+				if (distance > 0) {
+					const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+					const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+					const daysEl = document.getElementById('days');
+					const hoursEl = document.getElementById('hours');
+					const minutesEl = document.getElementById('minutes');
+					const secondsEl = document.getElementById('seconds');
+
+					if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+					if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+					if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+					if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+				}
+			}
+
+			updateCountdown();
+			setInterval(updateCountdown, 1000);
+		}
+
+		// Parallax effect for floating elements
+		function initParallax() {
+			window.addEventListener('scroll', () => {
+				const scrolled = window.pageYOffset;
+				const parallaxElements = document.querySelectorAll('.animate-float');
+				
+				parallaxElements.forEach(element => {
+					const speed = 0.5;
+					const yPos = -(scrolled * speed);
+					element.style.transform = `translateY(${yPos}px)`;
+				});
+			});
+		}
+
+		// Function to initialize all animations
+		function initializeAll() {
+			// Reset any existing animations first
+			document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+				el.classList.remove('animate');
+			});
+
+			// Initialize animations
+			initScrollAnimations();
+			initCountdown();
+			initParallax();
+
+			// Add smooth scrolling for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				});
+			});
+		}
+
+		// Initialize on DOM ready
+		document.addEventListener('DOMContentLoaded', initializeAll);
+
+		// Re-initialize on Astro page transitions
+		document.addEventListener('astro:page-load', initializeAll);
+
+		// Also handle the case where script runs after DOM is already loaded
+		if (document.readyState !== 'loading') {
+			initializeAll();
+		}
+	</script>
 </BaseLayout>

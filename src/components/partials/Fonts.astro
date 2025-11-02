@@ -2,4 +2,31 @@
 import { Font } from "astro:assets";
 ---
 
-<Font cssVariable="--font-angry" preload />
+<Font cssVariable="--font-angry" />
+
+<!-- Use font immediately to justify preload -->
+<style>
+	/* Ensure font is loaded and used immediately */
+	.font-angry {
+		font-family: var(--font-angry), system-ui, sans-serif;
+	}
+	
+	/* Invisible element to trigger font load immediately */
+	.font-preload-trigger {
+		position: absolute;
+		visibility: hidden;
+		font-family: var(--font-angry);
+		font-style: normal;
+	}
+	
+	.font-preload-trigger-italic {
+		position: absolute;
+		visibility: hidden;
+		font-family: var(--font-angry);
+		font-style: italic;
+	}
+</style>
+
+<!-- Invisible elements to trigger font loading immediately -->
+<span class="font-preload-trigger">.</span>
+<span class="font-preload-trigger-italic">.</span>
