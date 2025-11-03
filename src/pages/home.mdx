@@ -12,20 +12,20 @@ import Image from "astro/components/Image.astro";
 
 <h4 class="mt-0 text-center">(Angry Birds Edition)</h4>
 
-import Red from "@/assets/images/red/red_concerned.webp";
+import Red from "@/assets/page/home/register.png";
 
-<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-5">
-    <div class="col-span-1 flex flex-col justify-center items-center">
-        <Image
-            src={Red}
-            alt="Red - The Angry Birds"
-            class="w-64 h-64 md:w-48 md:h-48 xl:w-64 xl:h-64 object-contain my-5!"
-        />
+<div class="w-full grid grid-cols-1 md:grid-cols-5 gap-5">
+    <div class="col-span-2 flex flex-col justify-center items-center">
         <a 
             target="_blank"
             href="https://unstop.com/p/hack-the-winter-the-second-wave-angry-bird-edition-graphic-era-hill-university-gehu-bhimtal-1571242"
-			class="mt-8 px-6 py-3 bg-blue-600 text-white text-2xl font-angry rounded-lg hover:bg-blue-700 transition-all duration-300"
-        >Register</a>
+        >
+            <Image
+                src={Red}
+                alt="Red - The Angry Birds"
+                class="w-64 h-64 md:w-64 md:h-64 xl:w-96 xl:h-96 object-contain"
+            />
+        </a>
     </div>
 
     <div class="col-span-3 flex justify-center items-center align-middle">
@@ -40,6 +40,8 @@ import Red from "@/assets/images/red/red_concerned.webp";
 
 ### Stages
 
+The hackathon will be conducted in three stages - two online elimination rounds followed by a final
+onsite hackathon.
 
 import Stages from "@/assets/page/home/stages.png";
 
