@@ -57,7 +57,7 @@ function isCurrentPage(href: string) {
 		menus.map((menu) => (
 			<a
 				href={isCurrentPage(menu.href) ? null : menu.href}
-				class="flex flex-col align-middle items-center mb-8"
+				class="flex flex-col align-middle items-center mb-8 hover:text-shadow-lg/50"
 			>
 				<video
 					muted
@@ -75,8 +75,8 @@ function isCurrentPage(href: string) {
 				<p
 					class:list={[
 						"text-lg md:text-xl lg:text-2xl xl:text-3xl",
-						"text-center font-angry tracking-wider text-shadow-lg/50",
-						isCurrentPage(menu.href) ? "italic text-white/90" : "",
+						"text-center font-angry tracking-wider text-shadow-md/50",
+						isCurrentPage(menu.href) ? "italic text-white/90 " : "",
 					]}
 				>
 					{menu.title}
