@@ -3,6 +3,7 @@
 
 @theme inline {
 	--font-angry: var(--font-angry);
-	--font-sign: var(--font-whispering-signature);
-	--font-modern: var(--font-quality-modern);
+	--font-lazy-dog: var(--font-lazy-dog);
+
+	--font-sans: var(--font-noto-sans);
 }

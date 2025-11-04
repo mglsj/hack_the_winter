@@ -3,6 +3,11 @@ import type { FontFamily } from "node_modules/astro/dist/assets/fonts/types";
 
 const fonts: FontFamily[] = [
     {
+        provider: fontProviders.google(),
+        name: "Noto Sans",
+        cssVariable: "--font-noto-sans",
+    },
+    {
         provider: "local",
         name: "Feast Of Flesh BB",
         cssVariable: "--font-angry",
@@ -19,26 +24,37 @@ const fonts: FontFamily[] = [
     },
     {
         provider: "local",
-        name: "Whispering Signature",
-        cssVariable: "--font-whispering-signature",
+        name: "Lazy Dog",
+        cssVariable: "--font-lazy-dog",
         variants: [
             {
                 style: "normal",
-                src: ["./src/assets/fonts/WhisperingSignature.woff2"],
+                src: ["./src/assets/fonts/lazy_dog.woff2"],
             },
         ],
     },
-    {
-        provider: "local",
-        name: "Quality Modern",
-        cssVariable: "--font-quality-modern",
-        variants: [
-            {
-                style: "normal",
-                src: ["./src/assets/fonts/Quality Modern.otf"],
-            },
-        ],
-    },
+    //     {
+    //         provider: "local",
+    //         name: "Whispering Signature",
+    //         cssVariable: "--font-whispering-signature",
+    //         variants: [
+    //             {
+    //                 style: "normal",
+    //                 src: ["./src/assets/fonts/WhisperingSignature.woff2"],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         provider: "local",
+    //         name: "Quality Modern",
+    //         cssVariable: "--font-quality-modern",
+    //         variants: [
+    //             {
+    //                 style: "normal",
+    //                 src: ["./src/assets/fonts/Quality Modern.otf"],
+    //             },
+    //         ],
+    //     },
 ]
 
 export default fonts;
