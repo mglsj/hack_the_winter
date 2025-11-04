@@ -38,6 +38,10 @@ import Red from "@/assets/page/home/register.png";
     </div>
 </div>
 
+import Timer from "@/components/pages/index/Timer.astro";
+
+<Timer />
+
 ## Stages
 
 The hackathon will be conducted in three stages - two online elimination rounds followed by a final
@@ -51,44 +55,19 @@ import Stages from "@/assets/page/home/rounds.png";
     class="w-full h-auto my-5 object-contain"
  />
 
-Read the rules section for detailed information about each round.
+(Read the rules to know more)
 
-{/* #### The Nest (Online)
+## Prizes
 
-##### Where every idea is born. 
+Exciting prizes await the winners, runner-ups, and participants.
 
-Round 1 - Online Prototype Submission (Elimination)
+import Prizes from "@/assets/page/home/prizes.png";
 
-- Teams submit their ideas through the Unstop event portal, themes and problem statements will be given by us.
-- Submission must include: problem statement, proposed solution, tech stack, and prototype plan.
-- Duration: 7 days.
-- Evaluation based on innovation, feasibility, and impact.
-- Top 60% teams will advance to the next round.
-
-
-#### The Slingshot (Online)
-
-##### It's time to launch. 
-
-Round 2 - System Design Round (Elimination)
-
-- Ensuring teams can think out of the box, and know how they can scale their system.
-- This will be a round testing your cache, docker, load balancer, and LLD skills.
-- Duration: 5 days.
-- Evaluation based on innovation, feasibility, and impact.
-- Top 100 teams will advance to the physical hackathon.
-
-
-#### The Impact Zone (Offline) 
-
-##### The ultimate strike. 
-
-Round 3 - Onsite Hackathon (24 Hours)
-
-- Teams will work continuously for 24 hours at the venue.
-- Mentors and domain experts will be available for guidance.
-- Mid-review checkpoints will be conducted at the 6th, 12th, 18th, and 24th hours to track progress.
-- Teams must submit their final project along with a working demo and presentation. */}
+<Image
+    src={Prizes}
+    alt="prizes"
+    class="w-full h-auto my-5 object-contain"
+ />
 
 ## What to Expect?
 
@@ -120,3 +99,20 @@ Only shortlisted teams will qualify for the on-site (physical) hackathon.
 To ensure participants have a seamless experience, facilities like accommodation, food, and technical arrangements will be provided.
 
 These will require a nominal additional fee, which will be communicated and collected through follow-up emails after qualification.
+
+## Register Now!
+
+Register now on Unstop! Registration starts November 25th, 2025.
+
+import Register from "@/assets/page/home/register_2.png";
+
+<a 
+    target="_blank"
+    href="https://unstop.com/p/hack-the-winter-the-second-wave-angry-bird-edition-graphic-era-hill-university-gehu-bhimtal-1571242"
+>
+    <Image
+        src={Register}
+        alt="Register on Unstop"
+        class="w-full max-w-lg h-auto my-5 mx-auto object-contain"    
+    />
+</a>

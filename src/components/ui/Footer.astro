@@ -1,9 +1,33 @@
 ---
+import Gehu from "@/assets/gehu_btl_white.svg";
+import Wecode from "@/assets/wecode.svg";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
 interface Props {
 	class?: string;
 }
 
 const { class: className } = Astro.props;
+
+const socials = [
+	{
+		name: "globe",
+		url: "https://www.wecode.college/",
+	},
+	{
+		name: "instagram",
+		url: "https://www.instagram.com/wecode_gehu/",
+	},
+	{
+		name: "linkedin",
+		url: "https://www.linkedin.com/company/wecodegehu/",
+	},
+	{
+		name: "discord",
+		url: "https://discord.gg/tfpcapMCz4",
+	},
+];
 ---
 
 <footer
@@ -13,11 +37,21 @@ const { class: className } = Astro.props;
 	]}
 	{...Astro.props}
 >
+	<div class="flex flex-row align-middle justify-center items-center gap-6">
+		{
+			socials.map((social) => (
+				<a href={social.url} target="_blank">
+					<Icon name={social.name} class="h-8 w-8" />
+				</a>
+			))
+		}
+	</div>
+
 	<p class="mt-2">
 		&copy; {new Date().getFullYear()} Hack The Winter. All rights reserved.
 	</p>
 
-	<p class="text-white/70 my-2">
+	<p class="text-white/70 mb-2">
 		<span class="text-nowrap"
 			><a
 				href="https://www.wecode.college/"
@@ -28,6 +62,11 @@ const { class: className } = Astro.props;
 		<span class="text-nowrap">Graphic Era Hill University,</span>
 		<span class="text-nowrap">Bhimtal Campus</span>
 	</p>
+
+	<div class="flex flex-row align-middle justify-center items-center gap-6">
+		<Wecode class="h-16 w-auto" />
+		<Gehu class="h-25 w-auto" />
+	</div>
 
 	<p>
 		Designed by Lakshyajeet Jalal (<a

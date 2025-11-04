@@ -9,11 +9,9 @@ export interface Props {
 	ogImage?: ImageMetadata;
 }
 
-const {
-	title = siteConfig.title,
-	description = siteConfig.description,
-	ogImage,
-} = Astro.props;
+const { title, description = siteConfig.description, ogImage } = Astro.props;
+
+const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
 
 let ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
 
@@ -32,7 +30,7 @@ if (ogImage) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>{title}</title>
+<title>{pageTitle}</title>
 <meta name="description" content={description} />
 <meta name="url" content={Astro.url.href} />
 <meta name="robots" content="index,follow" />
@@ -43,7 +41,7 @@ if (ogImage) {
 
 <!-- Open Graph -->
 
-<meta property="og:title" content={title} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url.href} />
