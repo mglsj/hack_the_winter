@@ -1,7 +1,6 @@
 ---
 import Gehu from "@/assets/gehu_btl_white.svg";
 import Wecode from "@/assets/wecode.svg";
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -27,6 +26,10 @@ const socials = [
 		name: "discord",
 		url: "https://discord.gg/tfpcapMCz4",
 	},
+	{
+		name: "map",
+		url: "https://maps.app.goo.gl/8z3yMh2s3KUmShTt8",
+	},
 ];
 ---
 
@@ -37,7 +40,7 @@ const socials = [
 	]}
 	{...Astro.props}
 >
-	<div class="flex flex-row align-middle justify-center items-center gap-6">
+	<div class="flex flex-row align-middle justify-center items-center gap-5">
 		{
 			socials.map((social) => (
 				<a href={social.url} target="_blank">
@@ -52,20 +55,18 @@ const socials = [
 	</p>
 
 	<p class="text-white/70 mb-2">
-		<span class="text-nowrap"
-			><a
-				href="https://www.wecode.college/"
-				target="_blank"
-				class="underline">We Code Club</a
-			>,</span
-		>
+		<span class="text-nowrap">We Code Club,</span>
 		<span class="text-nowrap">Graphic Era Hill University,</span>
 		<span class="text-nowrap">Bhimtal Campus</span>
 	</p>
 
 	<div class="flex flex-row align-middle justify-center items-center gap-6">
-		<Wecode class="h-16 w-auto" />
-		<Gehu class="h-25 w-auto" />
+		<a href="https://www.wecode.college/" target="_blank">
+			<Wecode class="h-16 w-auto" />
+		</a>
+		<a href="https://gehu.ac.in/bhimtal/" target="_blank">
+			<Gehu class="h-25 w-auto" />
+		</a>
 	</div>
 
 	<p>

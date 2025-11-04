@@ -1,0 +1,11 @@
+Model Information:
+* title:	Red (Angry Birds Movie)
+* source:	https://sketchfab.com/3d-models/red-angry-birds-movie-09f919712d1d4696abb496b131911398
+* author:	Guilherme Navarro (https://sketchfab.com/guinavarro.al)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Red (Angry Birds Movie)" (https://sketchfab.com/3d-models/red-angry-birds-movie-09f919712d1d4696abb496b131911398) by Guilherme Navarro (https://sketchfab.com/guinavarro.al) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

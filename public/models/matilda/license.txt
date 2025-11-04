@@ -1,0 +1,11 @@
+Model Information:
+* title:	Matilda (Angry Birds Movie)
+* source:	https://sketchfab.com/3d-models/matilda-angry-birds-movie-a100493fc9ac41918137cd1db4293d5e
+* author:	Guilherme Navarro (https://sketchfab.com/guinavarro.al)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Matilda (Angry Birds Movie)" (https://sketchfab.com/3d-models/matilda-angry-birds-movie-a100493fc9ac41918137cd1db4293d5e) by Guilherme Navarro (https://sketchfab.com/guinavarro.al) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

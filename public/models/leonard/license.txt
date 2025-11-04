@@ -1,0 +1,11 @@
+Model Information:
+* title:	Leonard (Angry Birds Movie)
+* source:	https://sketchfab.com/3d-models/leonard-angry-birds-movie-d0f24d6745b04a108df5900d802a109e
+* author:	Guilherme Navarro (https://sketchfab.com/guinavarro.al)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Leonard (Angry Birds Movie)" (https://sketchfab.com/3d-models/leonard-angry-birds-movie-d0f24d6745b04a108df5900d802a109e) by Guilherme Navarro (https://sketchfab.com/guinavarro.al) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

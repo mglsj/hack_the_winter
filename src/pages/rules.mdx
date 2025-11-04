@@ -8,18 +8,45 @@ import Image from "astro/components/Image.astro";
 
 # Rules
 
+## Event Details
+
+import Samantha from "@/assets/images/samantha.webp";
+
+<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-5">
+    <div class="col-span-3 flex flex-col justify-center items-center align-middle">
+
+    - **Date:** 19th-20th January 2026
+    - **Team Size:** 4 members (Inter-college allowed)
+    - **Fees:** ₹200 per member
+    - **Mode:** On-site
+    - **Venue:** GEHU Bhimtal Campus
+    - **Eligibility:** UG/PG students across India
+
+    </div>
+
+    <div class="col-span-1 flex flex-col justify-center items-center">
+        <Image
+            src={Samantha}
+            alt="Samantha"
+            class="max-w-64 max-h-64 md:max-w-64 md:max-h-64 xl:max-w-96 xl:max-h-96 object-contain m-0! select-none"
+        />
+    </div>
+</div>
+
 ## Stages
 
 import Blues from "@/assets/images/blues.webp";
 
 #### Round 1 - Online Prototype Submission (Elimination)
 
+20 Dec 25, 12:00 AM IST - 26 Dec 25, 11:59 PM IST
+
 <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-5">
     <div class="col-span-1 flex flex-col justify-center items-center">
         <Image
             src={Blues}
             alt="Blues"
-            class="w-64 h-64 md:w-64 md:h-64 xl:w-96 xl:h-96 object-contain"
+            class="max-w-64 max-h-64 md:max-w-64 md:max-h-64 xl:max-w-96 xl:max-h-96 object-contain m-0! select-none"
         />
     </div>
 
@@ -38,6 +65,8 @@ import Hatchlings from "@/assets/images/hatchlings.webp";
 
 #### Round 2 - System Design Round (Elimination)
 
+02 Jan 26, 12:00 AM IST - 05 Jan 26, 11:59 PM IST
+
 <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-5">
 
     <div class="col-span-3 flex flex-col justify-center items-center align-middle">
@@ -54,13 +83,15 @@ import Hatchlings from "@/assets/images/hatchlings.webp";
         <Image
             src={Hatchlings}
             alt="Hatchlings"
-            class="w-64 h-64 md:w-64 md:h-64 xl:w-96 xl:h-96 object-contain"
+            class="max-w-64 max-h-64 md:max-w-64 md:max-h-64 xl:max-w-96 xl:max-h-96 object-contain m-0! select-none"
         />
     </div>
 
 </div>
 
 #### Round 3 - Onsite Hackathon (24 Hours)
+
+19 Jan 26, 09:00 AM IST - 20 Jan 26, 06:00 PM IST
 
 import Zach from "@/assets/images/zach.webp";
 
@@ -69,7 +100,7 @@ import Zach from "@/assets/images/zach.webp";
         <Image
             src={Zach}
             alt="Zach"
-            class="w-64 h-64 md:w-64 md:h-64 xl:w-96 xl:h-96 object-contain"
+            class="max-w-64 max-h-64 md:max-w-64 md:max-h-64 xl:max-w-96 xl:max-h-96 object-contain m-0! select-none"
         />
     </div>
 
