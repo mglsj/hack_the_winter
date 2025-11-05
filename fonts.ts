@@ -2,11 +2,11 @@ import { fontProviders } from "astro/config";
 import type { FontFamily } from "node_modules/astro/dist/assets/fonts/types";
 
 const fonts: FontFamily[] = [
-    {
-        provider: fontProviders.google(),
-        name: "Noto Sans",
-        cssVariable: "--font-noto-sans",
-    },
+    // {
+    //     provider: fontProviders.google(),
+    //     name: "Noto Sans",
+    //     cssVariable: "--font-noto-sans",
+    // },
     {
         provider: "local",
         name: "Feast Of Flesh BB",
@@ -30,6 +30,17 @@ const fonts: FontFamily[] = [
             {
                 style: "normal",
                 src: ["./src/assets/fonts/lazy_dog.woff2"],
+            },
+        ],
+    },
+    {
+        provider: "local",
+        name: "KG Broken Vessels Sketch",
+        cssVariable: "--font-broken-vessels",
+        variants: [
+            {
+                style: "normal",
+                src: ["./src/assets/fonts/kg-broken-vessels-sketch/kimberly-geswein_kg-broken-vessels-sketch/KGBrokenVesselsSketch.ttf"],
             },
         ],
     },

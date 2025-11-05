@@ -5,153 +5,340 @@ import MasterMatilda from "@/assets/images/master_matilda.png";
 ---
 
 <section class="problem-statement-section my-8 pb-32 lg:pb-8">
-	<div class="relative w-full max-w-6xl mx-auto">
-		<!-- Problem Statement Display Area -->
-		<div class="flex flex-col lg:flex-row justify-center items-end">
-			<div class="shrink-0 hidden lg:block relative z-10">
-				<Image
-					src={MasterMatilda}
-					alt="Master Matilda"
-					class="w-120 h-auto xl:w-xl 2xl:w-2xl"
-				/>
-			</div>
+    <h2 class="text-4xl font-bold text-center mb-8">Problem Statements</h2>
+    
+    <div class="relative w-full max-w-6xl mx-auto">
+        
+        <!-- Toggle Switch -->
+        <div class="flex justify-center mb-6">
+            <div class="toggle-container bg-red-600 rounded-full p-2 flex shadow-lg border-2 border-white/30">
+                <button 
+                    id="current-btn" 
+                    class="toggle-btn active px-6 py-3 rounded-full font-angry font-bold text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                    Current Statements
+                </button>
+                <button 
+                    id="past-btn" 
+                    class="toggle-btn px-6 py-3 rounded-full font-angry font-bold text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                    Past Statements
+                </button>
+            </div>
+        </div>
 
-			<!-- Board with Problem Statements -->
-			<div class="relative shrink-0 lg:-ml-32 xl:-ml-40 2xl:-ml-48">
-				<Image
-					src={BoardImg}
-					alt="Problem Statement Board"
-					class="w-full max-w-2xl xl:max-w-3xl h-auto"
-				/>
+        <!-- Problem Statement Display Area -->
+        <div class="flex flex-col lg:flex-row justify-center items-end">
+            <!-- Master Matilda Character -->
+            <div class="flex-shrink-0 hidden lg:block relative z-10">
+                <Image
+                    src={MasterMatilda}
+                    alt="Master Matilda"
+                    class="w-[30rem] h-auto xl:w-[36rem] 2xl:w-[42rem]"
+                />
+            </div>
 
-				<!-- Master Matilda for Mobile - positioned on left side with overlap -->
-				<div class="absolute -bottom-48 -left-4 lg:hidden z-10">
-					<Image
-						src={MasterMatilda}
-						alt="Master Matilda"
-						class="w-96 h-auto sm:w-md"
-					/>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- Board with Problem Statements -->
+            <div class="relative flex-shrink-0 lg:-ml-32 xl:-ml-40 2xl:-ml-48">
+                <Image
+                    src={BoardImg}
+                    alt="Problem Statement Board"
+                    class="w-full max-w-2xl xl:max-w-3xl h-auto"
+                />
+                
+                <!-- Master Matilda for Mobile - positioned on left side with overlap -->
+                <div class="absolute -bottom-48 -left-4 lg:hidden z-10">
+                    <Image
+                        src={MasterMatilda}
+                        alt="Master Matilda"
+                        class="w-96 h-auto sm:w-[28rem]"
+                    />
+                </div>
+
+                <!-- Problem Statement Content Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8">
+                    <div class="problem-content text-center max-w-lg md:max-w-2xl lg:max-w-3xl w-full relative">
+                        <!-- Current Statements -->
+                        <div id="current-statements" class="statement-group">
+                            <div class="statement-item active p-4 mb-4">
+                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg" style="font-family: var(--font-broken-vessels);">
+                                    Problem Statements
+                                </h3>
+                                <p class="text-xl md:text-2xl text-white drop-shadow-lg font-bold" style="font-family: var(--font-broken-vessels);">
+                                    Releasing Soon!
+                                </p>
+                                <p class="text-sm md:text-base text-white mt-2 drop-shadow-md font-semibold">
+                                    Stay tuned for exciting challenges coming your way.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Past Statements - PDF First Pages with Navigation -->
+                        <div id="past-statements" class="statement-group hidden relative">
+                            <!-- Left Arrow -->
+                            <button 
+                                id="prev-btn" 
+                                class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-20 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                aria-label="Previous Statement"
+                            >
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+
+                            <!-- Right Arrow -->
+                            <button 
+                                id="next-btn" 
+                                class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-20 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                aria-label="Next Statement"
+                            >
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+
+                            <!-- PDF Statements as Images -->
+                            <div class="statement-item active p-1">
+                                <a 
+                                    href="https://docs.google.com/document/d/1rcRB_D3H2O6oOaDeTmL0tBMxcgE8rzYmqzeogimlLcI/edit?tab=t.0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="block w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                >
+                                    <img
+                                        src="/images/pdf-pages/(AI) Adversarial AI–Powered Accessible CAPTCHA Solver_page-0001.jpg"
+                                        alt="AI CAPTCHA Solver Problem Statement - Click to view full document"
+                                        class="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                            
+                            <div class="statement-item p-1 hidden">
+                                <a 
+                                    href="https://docs.google.com/document/d/1WAGW9vfuDpJDFCwbo0tla_n1eNT21JCawRRw7OEapbo/edit?tab=t.0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="block w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                >
+                                    <img
+                                        src="/images/pdf-pages/BuildForGEHU'25 Flowchart Maker App_page-0001.jpg"
+                                        alt="Flowchart Maker Problem Statement - Click to view full document"
+                                        class="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                            
+                            <div class="statement-item p-1 hidden">
+                                <a 
+                                    href="https://docs.google.com/document/d/1ocGHfb4R72NqaelWS9AAM-t3tTzuYUnAhSzcZDhrP5M/edit?tab=t.0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="block w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                >
+                                    <img
+                                        src="/images/pdf-pages/BuildForGEHU'25 GPU-Accelerated String Matching_page-0001.jpg"
+                                        alt="String Matching Problem Statement - Click to view full document"
+                                        class="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                            
+                            <div class="statement-item p-1 hidden">
+                                <a 
+                                    href="https://docs.google.com/document/d/1clXvAPFvjHbGQ9VllL7_TkIIOvqPFIxIIStKboi3BbY/edit?tab=t.0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="block w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                >
+                                    <img
+                                        src="/images/pdf-pages/BuildForGEHU'25 Tap-to-Share Contact across Any Mobile Platform_page-0001.jpg"
+                                        alt="Contact Sharing Problem Statement - Click to view full document"
+                                        class="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                            
+                            <div class="statement-item p-1 hidden">
+                                <a 
+                                    href="https://docs.google.com/document/d/1bFQErWKMvuH0hOcysGD9PIeiPPULy90DVy8xYm5OV1Y/edit?tab=t.0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="block w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                >
+                                    <img
+                                        src="/images/pdf-pages/BuildForGEHU'25 Traffic Congestion Management at Kachi Dham_page-0001.jpg"
+                                        alt="Traffic Management Problem Statement - Click to view full document"
+                                        class="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+
+                            <!-- Statement Counter -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                <span id="current-index">1</span> / <span id="total-statements">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </section>
 
+
+
 <style>
-	.toggle-btn {
-		background: transparent;
-		color: #9ca3af;
-		border: none;
-		cursor: pointer;
-	}
+    .toggle-btn {
+        background: transparent;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        opacity: 0.7;
+    }
+    
+    .toggle-btn.active {
+        background: #ffffff;
+        color: #dc2626;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        text-shadow: none;
+        opacity: 1;
+    }
+    
+    .toggle-btn:hover {
+        opacity: 1;
+        color: #ffffff;
+    }
+    
+    .toggle-btn.active:hover {
+        color: #dc2626;
+    }
+    
+    .statement-item {
+        opacity: 0.6;
+        transform: scale(0.95);
+        transition: all 0.3s ease;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .statement-item.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .problem-content {
+        height: auto;
+        overflow: visible;
+    }
+    
 
-	.toggle-btn.active {
-		background: #3b82f6;
-		color: white;
-	}
-
-	.statement-item {
-		opacity: 0.6;
-		transform: scale(0.95);
-		transition: all 0.3s ease;
-		background: transparent;
-		border-radius: 0;
-		box-shadow: none;
-	}
-
-	.statement-item.active {
-		opacity: 1;
-		transform: scale(1);
-	}
-
-	.problem-content {
-		max-height: 400px;
-		overflow-y: auto;
-	}
-
-	/* Custom scrollbar for problem content */
-	.problem-content::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	.problem-content::-webkit-scrollbar-track {
-		background: rgba(139, 69, 19, 0.2);
-		border-radius: 3px;
-	}
-
-	.problem-content::-webkit-scrollbar-thumb {
-		background: rgba(139, 69, 19, 0.6);
-		border-radius: 3px;
-	}
-
-	.problem-content::-webkit-scrollbar-thumb:hover {
-		background: rgba(139, 69, 19, 0.8);
-	}
 </style>
 
 <script>
-	function initProblemStatements() {
-		const currentBtn = document.getElementById("current-btn");
-		const pastBtn = document.getElementById("past-btn");
-		const currentStatements = document.getElementById("current-statements");
-		const pastStatements = document.getElementById("past-statements");
+    function initProblemStatements() {
+        const currentBtn = document.getElementById('current-btn');
+        const pastBtn = document.getElementById('past-btn');
+        const currentStatements = document.getElementById('current-statements');
+        const pastStatements = document.getElementById('past-statements');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentIndexEl = document.getElementById('current-index');
+        
+        let currentStatementIndex = 0;
+        let autoRotateInterval;
+        
+        if (!currentBtn || !pastBtn || !currentStatements || !pastStatements) return;
+        
+        // Toggle functionality
+        currentBtn.addEventListener('click', () => {
+            currentBtn.classList.add('active');
+            pastBtn.classList.remove('active');
+            currentStatements.classList.remove('hidden');
+            pastStatements.classList.add('hidden');
+        });
+        
+        pastBtn.addEventListener('click', () => {
+            pastBtn.classList.add('active');
+            currentBtn.classList.remove('active');
+            pastStatements.classList.remove('hidden');
+            currentStatements.classList.add('hidden');
+            
+            // Load first PDF when switching to past statements
+            setTimeout(() => {
+                showStatement(0);
+            }, 100);
+        });
+        
+        // Manual navigation functions
+        function showStatement(index) {
+            const statements = pastStatements.querySelectorAll('.statement-item');
+            
+            // Hide all statements
+            statements.forEach(statement => {
+                statement.classList.add('hidden');
+                statement.classList.remove('active');
+            });
+            
+            // Show selected statement
+            if (statements[index]) {
+                statements[index].classList.remove('hidden');
+                statements[index].classList.add('active');
+                currentStatementIndex = index;
+                
+                // Update counter
+                if (currentIndexEl) {
+                    currentIndexEl.textContent = index + 1;
+                }
+                
 
-		if (!currentBtn || !pastBtn || !currentStatements || !pastStatements)
-			return;
-
-		// Toggle functionality
-		currentBtn.addEventListener("click", () => {
-			currentBtn.classList.add("active");
-			pastBtn.classList.remove("active");
-			currentStatements.classList.remove("hidden");
-			pastStatements.classList.add("hidden");
-		});
-
-		pastBtn.addEventListener("click", () => {
-			pastBtn.classList.add("active");
-			currentBtn.classList.remove("active");
-			pastStatements.classList.remove("hidden");
-			currentStatements.classList.add("hidden");
-		});
-
-		// Auto-rotate through statements
-		function rotateStatements() {
-			const activeGroup = document.querySelector(
-				".statement-group:not(.hidden)",
-			);
-			if (!activeGroup) return;
-
-			const statements = activeGroup.querySelectorAll(".statement-item");
-			const currentActive = activeGroup.querySelector(
-				".statement-item.active",
-			);
-
-			if (statements.length === 0) return;
-
-			let currentIndex = Array.from(statements).indexOf(currentActive);
-
-			// Remove active class from current
-			if (currentActive) {
-				currentActive.classList.remove("active");
-			}
-
-			// Move to next statement
-			currentIndex = (currentIndex + 1) % statements.length;
-			statements[currentIndex].classList.add("active");
-		}
-
-		// Start auto-rotation
-		setInterval(rotateStatements, 4000);
-	}
-
-	// Initialize on DOM ready
-	document.addEventListener("DOMContentLoaded", initProblemStatements);
-
-	// Re-initialize on Astro page transitions
-	document.addEventListener("astro:page-load", initProblemStatements);
-
-	// Also handle the case where script runs after DOM is already loaded
-	if (document.readyState !== "loading") {
-		initProblemStatements();
-	}
+            }
+        }
+        
+        function nextStatement() {
+            const statements = pastStatements.querySelectorAll('.statement-item');
+            const nextIndex = (currentStatementIndex + 1) % statements.length;
+            showStatement(nextIndex);
+        }
+        
+        function prevStatement() {
+            const statements = pastStatements.querySelectorAll('.statement-item');
+            const prevIndex = (currentStatementIndex - 1 + statements.length) % statements.length;
+            showStatement(prevIndex);
+        }
+        
+        // Arrow button event listeners
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextStatement();
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevStatement();
+            });
+        }
+        
+        // Initialize first statement
+        showStatement(0);
+    }
+    
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', initProblemStatements);
+    
+    // Re-initialize on Astro page transitions
+    document.addEventListener('astro:page-load', initProblemStatements);
+    
+    // Also handle the case where script runs after DOM is already loaded
+    if (document.readyState !== 'loading') {
+        initProblemStatements();
+    }
 </script>

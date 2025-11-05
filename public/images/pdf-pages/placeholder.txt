@@ -1,0 +1,19 @@
+To complete the setup, please:
+
+1. Take screenshots of the first page of each PDF:
+   - (AI) Adversarial AI–Powered Accessible CAPTCHA Solver.pdf
+   - BuildForGEHU'25 Flowchart Maker App.pdf
+   - BuildForGEHU'25 GPU-Accelerated String Matching.pdf
+   - BuildForGEHU'25 Tap-to-Share Contact across Any Mobile Platform.pdf
+   - BuildForGEHU'25 Traffic Congestion Management at Kachi Dham.pdf
+
+2. Save them as JPG files with these exact names:
+   - ai-captcha-page1.jpg
+   - flowchart-maker-page1.jpg
+   - string-matching-page1.jpg
+   - contact-sharing-page1.jpg
+   - traffic-management-page1.jpg
+
+3. Place them in the public/images/pdf-pages/ folder
+
+This will ensure compatibility with Android Chrome and all other browsers!
