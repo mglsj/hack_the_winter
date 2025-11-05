@@ -15,7 +15,7 @@ const { frontmatter } = Astro.props as Props;
 <PageLayout title={frontmatter?.title} bodyClass={frontmatter?.bodyClass}>
 	<article
 		class:list={[
-			"min-w-full overflow-x-hidden",
+			"min-w-full",
 			"prose prose-invert",
 			"prose-headings:font-angry prose-headings:italic prose-headings:tracking-widest",
 			"prose-h1:text-5xl sm:prose-h1:text-6xl md:prose-h1:text-7xl lg:prose-h1:text-8xl xl:prose-h1:text-9xl prose-h1:text-shadow-lg/50",
