@@ -8,7 +8,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://hackthewinter.dev",
+	site: "https://hack-the-winter.pages.dev",
 	integrations: [mdx(), lenis(), icon()],
 	vite: {
 		plugins: [tailwindcss()],

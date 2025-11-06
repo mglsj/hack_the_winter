@@ -33,28 +33,6 @@ const fonts: FontFamily[] = [
             },
         ],
     },
-    //     {
-    //         provider: "local",
-    //         name: "Whispering Signature",
-    //         cssVariable: "--font-whispering-signature",
-    //         variants: [
-    //             {
-    //                 style: "normal",
-    //                 src: ["./src/assets/fonts/WhisperingSignature.woff2"],
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         provider: "local",
-    //         name: "Quality Modern",
-    //         cssVariable: "--font-quality-modern",
-    //         variants: [
-    //             {
-    //                 style: "normal",
-    //                 src: ["./src/assets/fonts/Quality Modern.otf"],
-    //             },
-    //         ],
-    //     },
 ]
 
 export default fonts;
