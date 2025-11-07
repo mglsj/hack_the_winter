@@ -70,7 +70,7 @@ export default function ProblemStatementReact() {
 	};
 
 	const renderCurrentContent = () => (
-		<div className="flex items-center justify-center h-44 sm:h-56 md:h-72 lg:h-84 xl:h-[26rem]">
+		<div className="flex items-center justify-center h-44 sm:h-56 md:h-72 lg:h-84 xl:h-104">
 			<div className="text-center text-white px-4">
 				<p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold drop-shadow-lg font-angry">
 					Releasing Soon!
@@ -147,22 +147,24 @@ export default function ProblemStatementReact() {
 							href={statement.link}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="block w-full h-44 sm:h-56 md:h-72 lg:h-84 xl:h-[26rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+							className="w-full h-44 sm:h-56 md:h-72 lg:h-84 xl:h-104 rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
 						>
 							<img
 								src={statement.image}
 								alt={`${statement.title} - Click to view full document`}
 								className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
 								loading="lazy"
+								decoding="async"
 							/>
 						</a>
 					) : (
-						<div className="w-full h-44 sm:h-56 md:h-72 lg:h-84 xl:h-[26rem] rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center">
+						<div className="w-full h-44 sm:h-56 md:h-72 lg:h-84 xl:h-104 rounded-lg shadow-lg border-2 border-white/20 bg-white overflow-hidden flex items-center justify-center">
 							<img
 								src={statement.image}
 								alt={statement.title}
 								className="max-w-full max-h-full object-contain"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 					)}
@@ -220,7 +222,9 @@ export default function ProblemStatementReact() {
 						<img
 							src={MasterMatilda.src}
 							alt="Master Matilda"
-							className="w-[30rem] h-auto xl:w-[36rem] 2xl:w-[42rem]"
+							className="w-120 h-auto xl:w-xl 2xl:w-2xl"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 
@@ -230,6 +234,8 @@ export default function ProblemStatementReact() {
 							src={BoardImage.src}
 							alt="Problem Statement Board"
 							className="w-full max-w-2xl xl:max-w-3xl h-auto"
+							loading="lazy"
+							decoding="async"
 						/>
 
 						{/* Master Matilda for Mobile - positioned on left side with overlap */}
@@ -237,7 +243,9 @@ export default function ProblemStatementReact() {
 							<img
 								src={MasterMatilda.src}
 								alt="Master Matilda"
-								className="w-96 h-auto sm:w-[28rem]"
+								className="w-96 h-auto sm:w-md"
+								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 
