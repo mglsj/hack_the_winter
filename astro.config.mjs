@@ -9,7 +9,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://hack-the-winter.pages.dev",
+	site: "https://hack.gehubhimtal.in/",
 	integrations: [mdx(), lenis(), icon(), react()],
 	vite: {
 		plugins: [tailwindcss()],
