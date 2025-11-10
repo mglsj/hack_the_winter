@@ -22,8 +22,12 @@ const { class: className, ...props } = Astro.props;
 	import type { GameType } from "@/lib/game";
 
 	let gameInstance: GameType;
+	let initialized = false;
 
 	async function startGame(container: HTMLElement) {
+		if (initialized) return;
+		initialized = true;
+
 		const [{ default: Game }] = await Promise.all([
 			import("@/lib/game"),
 			// Yield to next frame to avoid blocking paint
