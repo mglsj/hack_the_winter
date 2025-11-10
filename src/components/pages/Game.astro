@@ -47,7 +47,7 @@ const { class: className, ...props } = Astro.props;
 
 	function attachInteractionBoost(container: HTMLElement) {
 		const elevate = () => {
-			container.style.zIndex = "10";
+			container.style.zIndex = "2";
 		};
 
 		container.addEventListener("mousedown", elevate, { once: true });
@@ -56,9 +56,9 @@ const { class: className, ...props } = Astro.props;
 
 	document.addEventListener("astro:page-load", () => {
 		const container = document.getElementById("matter-container");
-
 		if (!container) return;
 
+		initialized = false;
 		attachInteractionBoost(container);
 		startGame(container);
 
@@ -66,12 +66,7 @@ const { class: className, ...props } = Astro.props;
 		const io = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						if (gameInstance) {
-							gameInstance.resume();
-						} else {
-							startGame(container);
-						}
+					if (entry.isIntersecting && initialized) {
 					} else {
 						// Optionally pause if scrolled away
 						gameInstance?.pause();
