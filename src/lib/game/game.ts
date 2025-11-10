@@ -2,8 +2,6 @@ import {
     Engine,
     Render,
     Runner,
-    Composites,
-    Common,
     MouseConstraint,
     Mouse,
     Composite,
@@ -206,10 +204,12 @@ class Game {
 
         const textures = await loadTextures(texturePaths);
 
+        const scale = window.innerWidth < 640 ? 0.6 : 1;
+
         // Initial light set
         const initial = [
-            this.$createBird(this.$width / 2, this.$height - 150, 30, textures.red, 2),
-            this.$createBird(this.$width / 2, this.$height - 150, 27, textures.chuck, 2),
+            this.$createBird(this.$width / 2, this.$height - 150, 30 * scale, textures.red, 2),
+            this.$createBird(this.$width / 2, this.$height - 150, 27 * scale, textures.chuck, 2),
         ];
 
         Composite.add(this.$world, initial);
@@ -217,12 +217,12 @@ class Game {
         // Defer heavier bodies until idle
         requestIdleCallback?.(() => {
             const rest = [
-                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_1, 1),
-                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_2, 1),
-                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_3, 1),
-                this.$createBird(this.$width / 2, this.$height - 150, 54, textures.bomb, 2),
-                this.$createBird(this.$width / 2, this.$height - 150, 51, textures.matilda, 2),
-                this.$createBird(this.$width / 2, this.$height - 150, 72, textures.terence, 2),
+                this.$createBird(this.$width / 2, this.$height - 150, 18 * scale, textures.blue_1, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 18 * scale, textures.blue_2, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 18 * scale, textures.blue_3, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 54 * scale, textures.bomb, 2),
+                this.$createBird(this.$width / 2, this.$height - 150, 51 * scale, textures.matilda, 2),
+                this.$createBird(this.$width / 2, this.$height - 150, 72 * scale, textures.terence, 2),
             ];
             Composite.add(this.$world, rest);
         });

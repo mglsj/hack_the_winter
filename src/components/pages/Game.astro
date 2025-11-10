@@ -9,15 +9,14 @@ const { class: className, ...props } = Astro.props;
 <div
 	id="matter-container"
 	class:list={[
-		"hidden md:block",
-		"absolute bottom-0 left-0 right-0 w-full h-[200lvh]",
+		"absolute bottom-0 left-0 right-0 w-full h-[120lvh]",
 		className,
 	]}
 	{...props}
 >
 </div>
 
-<div class="w-0 h-[200px] -z-1"></div>
+<div class="w-0 h-[120px] md:h-[200px] -z-1"></div>
 
 <script>
 	import type { GameType } from "@/lib/game";
@@ -47,10 +46,6 @@ const { class: className, ...props } = Astro.props;
 			container.style.zIndex = "10";
 		};
 
-		const reset = () => {
-			container.style.zIndex = "";
-		};
-
 		container.addEventListener("mousedown", elevate, { once: true });
 		container.addEventListener("touchstart", elevate, { once: true });
 	}
@@ -76,6 +71,8 @@ const { class: className, ...props } = Astro.props;
 					} else {
 						// Optionally pause if scrolled away
 						gameInstance?.pause();
+						container.style.zIndex = "";
+						attachInteractionBoost(container);
 					}
 				}
 			},
