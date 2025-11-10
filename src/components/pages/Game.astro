@@ -20,41 +20,73 @@ const { class: className, ...props } = Astro.props;
 <div class="w-0 h-[200px] -z-1"></div>
 
 <script>
-	import Game from "@/lib/game";
+	import type { GameType } from "@/lib/game";
 
-	async function initializeMatter() {
-		const container = document.getElementById(
-			"matter-container",
-		) as HTMLDivElement;
+	let gameInstance: GameType;
 
-		// Set z-index on first interaction
-		container.addEventListener(
-			"mousedown",
-			() => {
-				container.style.zIndex = "10";
-			},
-			{ once: true },
-		);
+	async function startGame(container: HTMLElement) {
+		const [{ default: Game }] = await Promise.all([
+			import("@/lib/game"),
+			// Yield to next frame to avoid blocking paint
+			new Promise((r) => requestAnimationFrame(r)),
+		]);
 
-		// mobile touch support
-		container.addEventListener(
-			"touchstart",
-			() => {
-				container.style.zIndex = "10";
-			},
-			{ once: true },
-		);
+		gameInstance = new Game(container);
+		gameInstance.run();
 
-		const game = new Game(container);
-
+		// Debounced resize
+		let resizeTimer: number | NodeJS.Timeout | undefined;
 		window.addEventListener("resize", () => {
-			game.resize();
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => gameInstance?.resize(), 150);
 		});
+	}
 
-		game.run();
+	function attachInteractionBoost(container: HTMLElement) {
+		const elevate = () => {
+			container.style.zIndex = "10";
+		};
+
+		const reset = () => {
+			container.style.zIndex = "";
+		};
+
+		container.addEventListener("mousedown", elevate, { once: true });
+		container.addEventListener("touchstart", elevate, { once: true });
 	}
 
 	document.addEventListener("astro:page-load", () => {
-		initializeMatter();
+		const container = document.getElementById("matter-container");
+
+		if (!container) return;
+
+		attachInteractionBoost(container);
+		startGame(container);
+
+		// Intersection gating
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						if (gameInstance) {
+							gameInstance.resume();
+						} else {
+							startGame(container);
+						}
+					} else {
+						// Optionally pause if scrolled away
+						gameInstance?.pause();
+					}
+				}
+			},
+			{ root: null, threshold: 0.01 },
+		);
+
+		io.observe(container);
+
+		// Fallback: start on first interaction if observer never fires
+		container.addEventListener("pointerdown", () => startGame(container), {
+			once: true,
+		});
 	});
 </script>

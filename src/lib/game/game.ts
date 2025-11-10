@@ -33,7 +33,7 @@ class Game {
         this.$updateDimensions();
 
         // create an engine
-        this.$engine = Engine.create({ positionIterations: 7, velocityIterations: 5, constraintIterations: 3 });
+        this.$engine = Engine.create();
         this.$world = this.$engine.world;
 
         // create a renderer
@@ -54,11 +54,33 @@ class Game {
     }
 
     run() {
-        this.resize();
+        this.resize(true);
         // start renderer and runner
         Render.run(this.$render);
         Runner.run(this.$runner, this.$engine);
         this.$createObjects();
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                this.pause();
+            } else {
+                this.resume();
+            }
+        });
+    }
+
+    paused = false;
+
+    pause() {
+        if (this.paused) return;
+        this.paused = true;
+        Runner.stop(this.$runner);
+    }
+
+    resume() {
+        if (!this.paused) return;
+        this.paused = false;
+        Runner.run(this.$runner, this.$engine);
     }
 
     $walls: {
@@ -69,7 +91,7 @@ class Game {
     } = {};
 
     $updateWalls() {
-        const thickness = 500;
+        const thickness = 150;
         const padding = 5;
         const offset = thickness / 2 - padding;
 
@@ -108,39 +130,47 @@ class Game {
 
     $setupMouse() {
         this.$mouse = Mouse.create(this.$render.canvas);
-        const mouseConstraint = MouseConstraint.create(this.$engine, {
-            mouse: this.$mouse,
-            constraint: {
-                stiffness: 0.2,
-                render: {
-                    visible: false,
-                },
-            },
-        });
 
-        Composite.add(this.$world, mouseConstraint);
+        const enableMouse = () => {
+            if ((this.$render as any)._mouseEnabled) return;
+            const mouseConstraint = MouseConstraint.create(this.$engine, {
+                mouse: this.$mouse,
+                constraint: { stiffness: 0.2, render: { visible: false } },
+            });
+            Composite.add(this.$world, mouseConstraint);
+            this.$render.mouse = this.$mouse;
+            (this.$render as any)._mouseEnabled = true;
 
-        this.$render.mouse = this.$mouse;
 
-        // safely remove legacy mousewheel listeners if present (guarded to satisfy TS)
-        const mw = (mouseConstraint.mouse as unknown as { mousewheel?: EventListener }).mousewheel;
-        const el = mouseConstraint.mouse.element as Element | null;
-        if (el && mw) {
-            try {
-                el.removeEventListener("mousewheel", mw);
-            } catch {
-                /* ignore */
+            // safely remove legacy mousewheel listeners if present (guarded to satisfy TS)
+            const mw = (mouseConstraint.mouse as unknown as { mousewheel?: EventListener }).mousewheel;
+            const el = mouseConstraint.mouse.element as Element | null;
+            if (el && mw) {
+                try {
+                    el.removeEventListener("mousewheel", mw);
+                } catch {
+                    /* ignore */
+                }
+                try {
+                    el.removeEventListener("DOMMouseScroll", mw);
+                } catch {
+                    /* ignore */
+                }
             }
-            try {
-                el.removeEventListener("DOMMouseScroll", mw);
-            } catch {
-                /* ignore */
-            }
-        }
+        };
+
+        // Enable on first pointer interaction
+        this.$render.canvas.addEventListener("pointerdown", enableMouse, { once: true });
+
     }
 
-    resize() {
+    resize(force: boolean = false) {
+        const prevW = this.$width;
+        const prevH = this.$height;
         this.$updateDimensions();
+
+        if (!force && prevW === this.$width && prevH === this.$height) return;
+
         this.$render.canvas.width = this.$width;
         this.$render.canvas.height = this.$height;
         this.$updateWalls();
@@ -176,27 +206,26 @@ class Game {
 
         const textures = await loadTextures(texturePaths);
 
-        const red = this.$createBird(this.$width / 2, this.$height - 150, 30, textures.red, 2);
-        const chuck = this.$createBird(this.$width / 2, this.$height - 150, 27, textures.chuck, 2);
-        const blue_1 = this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_1, 1);
-        const blue_2 = this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_2, 1);
-        const blue_3 = this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_3, 1);
-        const bomb = this.$createBird(this.$width / 2, this.$height - 150, 54, textures.bomb, 2);
-        const matilda = this.$createBird(this.$width / 2, this.$height - 150, 51, textures.matilda, 2);
-        const terence = this.$createBird(this.$width / 2, this.$height - 150, 72, textures.terence, 2);
+        // Initial light set
+        const initial = [
+            this.$createBird(this.$width / 2, this.$height - 150, 30, textures.red, 2),
+            this.$createBird(this.$width / 2, this.$height - 150, 27, textures.chuck, 2),
+        ];
 
-        Composite.add(this.$world, [
-            red,
-            chuck,
-            blue_1,
-            blue_2,
-            blue_3,
-            bomb,
-            matilda,
-            terence,
-        ]);
+        Composite.add(this.$world, initial);
 
-        console.log("Objects created");
+        // Defer heavier bodies until idle
+        requestIdleCallback?.(() => {
+            const rest = [
+                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_1, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_2, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 18, textures.blue_3, 1),
+                this.$createBird(this.$width / 2, this.$height - 150, 54, textures.bomb, 2),
+                this.$createBird(this.$width / 2, this.$height - 150, 51, textures.matilda, 2),
+                this.$createBird(this.$width / 2, this.$height - 150, 72, textures.terence, 2),
+            ];
+            Composite.add(this.$world, rest);
+        });
     }
 }
 
