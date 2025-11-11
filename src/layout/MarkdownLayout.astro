@@ -1,18 +1,14 @@
 ---
-import PageLayout from "./PageLayout.astro";
+import PageLayout, { type Props as PageLayoutProps } from "./PageLayout.astro";
 
 interface Props {
-	frontmatter: {
-		title?: string;
-		description?: string;
-		bodyClass?: string;
-	};
+	frontmatter: PageLayoutProps;
 }
 
 const { frontmatter } = Astro.props as Props;
 ---
 
-<PageLayout title={frontmatter?.title} bodyClass={frontmatter?.bodyClass}>
+<PageLayout {...frontmatter}>
 	<article
 		class:list={[
 			"min-w-full",

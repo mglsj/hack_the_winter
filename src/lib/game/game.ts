@@ -1,13 +1,12 @@
 import {
+    Bodies,
+    type Body,
     Engine,
     Render,
     Runner,
     MouseConstraint,
     Mouse,
-    Composite,
-    Bodies,
-    type Body,
-    type World,
+    World,
 } from "matter-js";
 import { loadTextures, type TextureInfo } from "./loader";
 
@@ -51,7 +50,7 @@ class Game {
         this.$runner = Runner.create();
     }
 
-    run() {
+    start() {
         this.resize(true);
         // start renderer and runner
         Render.run(this.$render);
@@ -65,6 +64,11 @@ class Game {
                 this.resume();
             }
         });
+
+        // Out of bounds check loop
+        setInterval(() => {
+            this.$outOfBoundsCheck();
+        }, 3000);
     }
 
     paused = false;
@@ -73,12 +77,14 @@ class Game {
         if (this.paused) return;
         this.paused = true;
         Runner.stop(this.$runner);
+        Render.stop(this.$render);
     }
 
     resume() {
         if (!this.paused) return;
         this.paused = false;
         Runner.run(this.$runner, this.$engine);
+        Render.run(this.$render);
     }
 
     $walls: {
@@ -97,7 +103,7 @@ class Game {
         for (const key in this.$walls) {
             const wall = this.$walls[key as keyof typeof this.$walls];
             if (wall) {
-                Composite.remove(this.$world, wall);
+                World.remove(this.$world, wall);
             }
         }
 
@@ -108,15 +114,14 @@ class Game {
             -offset,
             this.$width,
             thickness,
-            { isStatic: true, render: { visible: false, } },
+            { isStatic: true, render: { visible: false } },
         );
-        this.$walls.bottom = Bodies.rectangle(this.$width / 2, this.$height + offset, this.$width, thickness, { isStatic: true },);
         this.$walls.bottom = Bodies.rectangle(this.$width / 2, this.$height + offset, this.$width, thickness, { isStatic: true, render: { visible: false } },);
         this.$walls.left = Bodies.rectangle(-offset, this.$height / 2, thickness, this.$height, { isStatic: true, render: { visible: false } },);
         this.$walls.right = Bodies.rectangle(this.$width + offset, this.$height / 2, thickness, this.$height, { isStatic: true, render: { visible: false } },);
 
         // Add new walls to the world
-        Composite.add(this.$world, [
+        World.add(this.$world, [
             this.$walls.top,
             this.$walls.bottom,
             this.$walls.left,
@@ -135,7 +140,7 @@ class Game {
                 mouse: this.$mouse,
                 constraint: { stiffness: 0.2, render: { visible: false } },
             });
-            Composite.add(this.$world, mouseConstraint);
+            World.add(this.$world, mouseConstraint);
             this.$render.mouse = this.$mouse;
             (this.$render as any)._mouseEnabled = true;
 
@@ -206,8 +211,7 @@ class Game {
 
         const scale = window.innerWidth < 640 ? 0.6 : 1;
 
-        // Initial light set
-        const initial = [
+        const stack = [
             this.$createBird(this.$width / 2, this.$height - 150, 30 * scale, textures.red, 2),
             this.$createBird(this.$width / 2, this.$height - 150, 27 * scale, textures.chuck, 2),
             this.$createBird(this.$width / 2, this.$height - 150, 18 * scale, textures.blue_1, 1),
@@ -218,7 +222,16 @@ class Game {
             this.$createBird(this.$width / 2, this.$height - 150, 72 * scale, textures.terence, 2),
         ];
 
-        Composite.add(this.$world, initial);
+        World.add(this.$world, stack);
+    }
+
+    $outOfBoundsCheck() {
+        for (const body of this.$world.bodies) {
+            const { x, y } = body.position;
+            if (x < -200 || x > this.$width + 200 || y < -200 || y > this.$height + 200) {
+                World.remove(this.$world, body);
+            }
+        }
     }
 }
 

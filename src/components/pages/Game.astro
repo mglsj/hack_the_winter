@@ -9,7 +9,7 @@ const { class: className, ...props } = Astro.props;
 <div
 	id="matter-container"
 	class:list={[
-		"absolute bottom-0 left-0 right-0 w-full h-[120lvh]",
+		"absolute bottom-0 left-0 right-0 w-full h-[120lvh] cursor-grab touch-pan-y",
 		className,
 	]}
 	{...props}
@@ -20,9 +20,27 @@ const { class: className, ...props } = Astro.props;
 
 <button
 	id="matter-close"
-	class="hidden fixed top-0 right-0 p-5 m-5 bg-gray-500/35 rounded-2xl z-5 cursor-pointer"
-	>X</button
+	class:list={[
+		"hidden fixed top-0 right-0 m-5 z-5",
+		"bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg cursor-pointer",
+	]}
 >
+	<svg
+		class="w-5 h-5 sm:w-6 sm:h-6"
+		fill="none"
+		stroke="currentColor"
+		viewBox="0 0 24 24"
+		role="img"
+		aria-labelledby="matter-close-title"
+	>
+		<title id="matter-close-title">Close</title>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="2"
+			d="M6 18L18 6M6 6l12 12"></path>
+	</svg>
+</button>
 
 <script>
 	import type { GameType } from "@/lib/game";
@@ -41,7 +59,7 @@ const { class: className, ...props } = Astro.props;
 		]);
 
 		gameInstance = new Game(container);
-		gameInstance.run();
+		gameInstance.start();
 
 		// Debounced resize
 		let resizeTimer: number | NodeJS.Timeout | undefined;

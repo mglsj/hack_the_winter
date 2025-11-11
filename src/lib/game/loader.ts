@@ -24,7 +24,10 @@ async function getImage(src: string): Promise<HTMLImageElement> {
 
 async function loadTexture(path: string): Promise<TextureInfo> {
     const img = await getImage(path);
-    return { src: path, width: img.naturalWidth, height: img.naturalHeight };
+    const width = img.naturalWidth || img.width || 1;
+    const height = img.naturalHeight || img.height || 1;
+
+    return { src: path, width, height };
 }
 
 async function loadTextures<T extends Record<string, string>>(paths: T): Promise<{ [K in keyof T]: TextureInfo }> {

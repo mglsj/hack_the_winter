@@ -2,6 +2,7 @@
 layout: "@/layout/MarkdownLayout.astro"
 title: "Home"
 bodyClass: "bg-radial from-red-900 from-25% via-red-950 via-75% to-black to-125%"
+enableGame: true
 ---
 
 import { Image, ImageMap } from "@/components/helpers";
@@ -40,9 +41,9 @@ import Red from "@/assets/pages/home/register.png";
     </div>
 </div>
 
-import Timer from "@/components/pages/Timer.astro";
+import Countdown from "@/components/pages/Countdown.svelte";
 
-<Timer />
+<Countdown client:load />
 
 ## Stages
 
@@ -115,9 +116,9 @@ import Arrangements from "@/assets/pages/home/arrangements.png";
 
 ## Problem Statements
 
-import ProblemStatement from "@/components/pages/home/ProblemStatement.tsx";
+import ProblemStatement from "@/components/pages/home/ps/ProblemStatement.astro";
 
-<ProblemStatement client:load/>
+<ProblemStatement/>
 
 ## Register Now!
 

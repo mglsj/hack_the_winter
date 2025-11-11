@@ -6,10 +6,16 @@ import Navigation from "@/components/ui/Navigation.astro";
 
 export interface Props extends BaseProps {
 	class?: string;
+	enableGame?: boolean;
 	bodyClass?: string;
 }
 
-const { class: className, bodyClass, ...props } = Astro.props;
+const {
+	class: className,
+	enableGame = false,
+	bodyClass,
+	...props
+} = Astro.props;
 
 import Game from "@/components/pages/Game.astro";
 ---
@@ -40,7 +46,7 @@ import Game from "@/components/pages/Game.astro";
 		</main>
 	</div>
 
-	<!-- <Game /> -->
+	{import.meta.env.DEV && <Game />}
 </BaseLayout>
 
 <script>

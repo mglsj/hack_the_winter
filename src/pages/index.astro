@@ -4,8 +4,9 @@ import { Image } from "@/components/helpers";
 import "@/styles/animations.css";
 import FullHeight from "@/components/pages/index/FullHeight.astro";
 import AnimatedContainer from "@/components/pages/index/AnimatedContainer.astro";
-import Timer from "@/components/pages/Timer.astro";
+import Countdown from "@/components/pages/Countdown.svelte";
 
+// Images
 import BigBrother from "@/assets/images/big_bro.png";
 import Flock from "@/assets/images/flock.png";
 import Red from "@/assets/images/red/red_3.png";
@@ -99,7 +100,7 @@ import Navigation from "@/components/ui/Navigation.astro";
 				Coming Soon
 			</h2>
 
-			<Timer />
+			<Countdown client:load />
 		</AnimatedContainer>
 
 		<AnimatedContainer image={Hal} align="left">

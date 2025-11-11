@@ -1,0 +1,23 @@
+---
+import ProblemStatementSvelte from "./problem-statement.svelte";
+import { getImage } from "astro:assets";
+
+import MasterMatilda from "@/assets/images/master_matilda.png";
+import BoardImage from "@/assets/images/board_img.png";
+
+const MasterMatildaImage = await getImage({
+	src: MasterMatilda,
+	format: "avif",
+});
+
+const BoardImageOptimized = await getImage({
+	src: BoardImage,
+	format: "avif",
+});
+---
+
+<ProblemStatementSvelte
+	matildaImageSrc={MasterMatildaImage.src}
+	boardImageSrc={BoardImageOptimized.src}
+	client:visible
+/>
