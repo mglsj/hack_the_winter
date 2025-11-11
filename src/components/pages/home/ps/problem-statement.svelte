@@ -19,8 +19,8 @@
 {#snippet statementsStack(statements: Statement[])}
 	<div class="flex items-center justify-center h-full w-full relative">
 		{#if statements.length > 0}
-			<!-- Navigation Arrows -->
 			{#if statements.length > 1}
+				<!-- Navigation Arrows -->
 				<button
 					type="button"
 					class={[
@@ -63,11 +63,8 @@
 					]}
 					aria-label="Next Statement"
 					onclick={() => {
-						if (currentIndex > 0) {
-							currentIndex -= 1;
-						} else {
-							currentIndex = statements.length - 1;
-						}
+						currentIndex += 1;
+						currentIndex %= statements.length;
 					}}
 				>
 					<svg
@@ -81,11 +78,18 @@
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							stroke-width={2}
+							stroke-width="2"
 							d="M9 5l7 7-7 7"
 						/>
 					</svg>
 				</button>
+
+				<!-- Statement Counter -->
+				<div
+					class="absolute bottom-1.5 lg:botton-4 left-1/2 transform -translate-x-1/2 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold"
+				>
+					{currentIndex + 1} / {statements.length}
+				</div>
 			{/if}
 
 			<!-- Statement Image -->
