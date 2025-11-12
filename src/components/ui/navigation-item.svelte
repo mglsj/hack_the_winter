@@ -67,7 +67,7 @@
 		class="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-36 xl:w-36 object-contain"
 		autoplay={isCurrent ? true : undefined}
 	>
-		<source src={item.hevc} type="video/mp4; codecs='hvc1'" />
+		<source src={item.hevc} type={`video/mp4; codecs="hvc1"`} />
 		<source src={item.webm} type="video/webm" />
 		Your browser does not support the video tag.
 	</video>
