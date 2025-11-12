@@ -1,20 +1,22 @@
-import {
-    Bodies,
-    type Body,
-    Engine,
-    Render,
-    Runner,
-    MouseConstraint,
-    Mouse,
-    World,
+import Matter from "matter-js";
+const { Bodies, Engine, Render, Runner, MouseConstraint, Mouse, World } = Matter;
+
+import type {
+    Body,
+    Engine as EngineType,
+    Render as RenderType,
+    Runner as RunnerType,
+    Mouse as MouseType,
+    World as WorldType,
 } from "matter-js";
+
 import { loadTextures, type TextureInfo } from "./loader";
 
 class Game {
-    $engine: Engine;
-    $world: World;
-    $render: Render;
-    $runner: Runner;
+    $engine: EngineType;
+    $world: WorldType;
+    $render: RenderType;
+    $runner: RunnerType;
 
     $container: HTMLElement;
     $width!: number;
@@ -87,6 +89,15 @@ class Game {
         Render.run(this.$render);
     }
 
+    stop() {
+        Render.stop(this.$render);
+        Runner.stop(this.$runner);
+        World.clear(this.$world, false);
+        Engine.clear(this.$engine);
+        this.$render.canvas.remove();
+        this.$render.textures = {};
+    }
+
     $walls: {
         top?: Body
         bottom?: Body,
@@ -129,21 +140,23 @@ class Game {
         ]);
     }
 
-    $mouse!: Mouse;
+    $mouse!: MouseType;
 
     $setupMouse() {
         this.$mouse = Mouse.create(this.$render.canvas);
 
+        // local typed alias for render to avoid casting to `any` repeatedly
+        const render = this.$render as unknown as { _mouseEnabled?: boolean; mouse?: MouseType; canvas: HTMLCanvasElement };
+
         const enableMouse = () => {
-            if ((this.$render as any)._mouseEnabled) return;
+            if (render._mouseEnabled) return;
             const mouseConstraint = MouseConstraint.create(this.$engine, {
                 mouse: this.$mouse,
                 constraint: { stiffness: 0.2, render: { visible: false } },
             });
             World.add(this.$world, mouseConstraint);
-            this.$render.mouse = this.$mouse;
-            (this.$render as any)._mouseEnabled = true;
-
+            render.mouse = this.$mouse;
+            render._mouseEnabled = true;
 
             // safely remove legacy mousewheel listeners if present (guarded to satisfy TS)
             const mw = (mouseConstraint.mouse as unknown as { mousewheel?: EventListener }).mousewheel;

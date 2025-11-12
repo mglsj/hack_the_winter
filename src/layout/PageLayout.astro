@@ -17,7 +17,7 @@ const {
 	...props
 } = Astro.props;
 
-import Game from "@/components/pages/Game.astro";
+import FooterGame from "@/components/pages/FooterGame.svelte";
 ---
 
 <BaseLayout class:list={["", bodyClass]} {...props}>
@@ -46,7 +46,7 @@ import Game from "@/components/pages/Game.astro";
 		</main>
 	</div>
 
-	<Game />
+	<FooterGame client:visible />
 </BaseLayout>
 
 <script>
