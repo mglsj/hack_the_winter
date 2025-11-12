@@ -13,7 +13,8 @@
 		};
 	});
 
-	const targetTime = new Date("2025-12-19T18:30:00Z").getTime();
+	// 25 Dec 25, 12:00 AM IST
+	const targetTime = new Date("2025-12-25T00:00:00+05:30").getTime();
 
 	const time = $derived.by(() => {
 		const currentTime = date.getTime();
