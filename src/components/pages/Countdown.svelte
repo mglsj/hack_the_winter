@@ -48,6 +48,7 @@
 
 <div class="grid grid-cols-19 font-angry tracking-widest text-center">
 	{#each time as { label, value }, index}
+		<!-- Time Unit -->
 		<div class="col-span-4 flex flex-col">
 			<p
 				class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl m-0!"
@@ -60,6 +61,7 @@
 				{label}
 			</p>
 		</div>
+		<!-- Separator -->
 		{#if index < time.length - 1}
 			<div class="col-span-1">
 				<p
