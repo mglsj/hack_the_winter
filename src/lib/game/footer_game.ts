@@ -32,7 +32,7 @@ class FooterGame {
         this.$updateDimensions();
 
         // create an engine
-        this.$engine = Engine.create();
+        this.$engine = Engine.create({ enableSleeping: true });
         this.$world = this.$engine.world;
 
         // create a renderer
@@ -44,6 +44,7 @@ class FooterGame {
                 height: this.$height,
                 wireframes: false,
                 background: "transparent",
+                showSleeping: false,
             }
         });
 
